@@ -15,7 +15,10 @@ conducted using diverse datasets to verify the model’s adaptability.
 Deployment was the final step, where the best-performing model was integrated into
 a real-time processing framework. Ensuring seamless integration and testing the system
 in practical settings helped validate its usability for real-world applications.
-3.1 Data Collection & Preprocessing
+
+
+**Data Collection & Preprocessing**
+
 To ensure a robust evaluation, we will utilize the following high-quality datasets:
 • Librispeech – Speech data.
 • UrbanSound8K – Urban noise classification.
