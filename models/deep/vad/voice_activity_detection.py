@@ -2,7 +2,7 @@ from pyannote.audio import Model
 from pyannote.audio.pipelines import VoiceActivityDetection
 
 model = Model.from_pretrained("pyannote/segmentation", 
-                              use_auth_token="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")
+                              use_auth_token="")
 
 
 vad_pipeline = VoiceActivityDetection(segmentation=model)
