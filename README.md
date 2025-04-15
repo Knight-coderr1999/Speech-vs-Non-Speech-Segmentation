@@ -1,66 +1,74 @@
-# Speech-vs-Non-Speech-Segmentation
-Building a robust speech and non-speech segmentation model requires a careful blend of
-classical and deep learning techniques. This phase focuses on developing a system that
-can accurately differentiate speech from non-speech in various environments.
-To achieve this, we are planning to experiment with multiple machine learning models,
-from traditional classifiers to modern deep learning architectures. Each approach is to be
-tested to identify its strengths and weaknesses, ensuring that our model is both accurate
-and computationally efficient. Key optimizations, such as feature extraction and noise
-reduction techniques, are to be incorporated to enhance performance.
+# Use Case : Forensic Background Noise Classification for Enhanced Location Pinpointing
 
-Once the model is trained, it has to undergo rigorous evaluation to ensure reliability
-in real-world scenarios. Various performance metrics such as accuracy, precision, recall,
-and F1-score were used to assess its effectiveness. Additionally, real-world testing was
-conducted using diverse datasets to verify the model’s adaptability.
-Deployment was the final step, where the best-performing model was integrated into
-a real-time processing framework. Ensuring seamless integration and testing the system
-in practical settings helped validate its usability for real-world applications.
+**By:**  
+- Kunal Biswas (M24DE2014)  
+- Joel Paul (M24DE2012)  
 
+---
 
-**Data Collection & Preprocessing**
+## Overview
 
-To ensure a robust evaluation, we will utilize the following high-quality datasets:
-• Librispeech – Speech data.
-• UrbanSound8K – Urban noise classification.
-• AudioSet – General sound event recognition.
-Preprocessing Steps:
-• Standardize all audio files to a 16kHz sampling rate (mono-channel format).
-• Apply noise reduction, normalization, and augmentation techniques.
-• Extract meaningful audio features such as MFCCs (Mel Frequency Cepstral
-Coefficients) and Mel-Spectrograms.
+This project aims to enhance forensic investigations by classifying background noises in audio recordings to assist in precise location identification. By analyzing non-speech elements in audio, the system provides contextual clues that can refine GPS data and improve the accuracy of location pinpointing.
 
-**Model Implementation**
+---
 
-We will implement and evaluate both deep learning-based and traditional machine learning-
-based segmentation models:
+## Concept Diagram
 
-Deep Learning-Based Approaches:
-• YOHO-based CNN model for direct boundary regression.
-• E2E Segmenter for end-to-end segmentation and ASR integration.
-Classical Machine Learning Approach:
-• SVM Classifier with optimized feature extraction techniques.
+![Concept Diagram](concept_diagram.png)
 
-**Model Training & Evaluation**
+---
 
-Training Process:
-• Utilize high-performance computing (GPU acceleration) for deep learning
-model training.
-• Perform hyperparameter tuning to enhance model performance.
-• Augment dataset using synthetic variations to improve generalization.
-Evaluation Metrics:
-• Accuracy, Precision, Recall, and F1-score to measure segmentation effectiveness.
-• Computational efficiency for real-time execution.
-• Comparative analysis of deep learning vs. classical machine learning approaches.
+## Data Preparation
 
-**Expected Outcomes**
+- **UrbanSound8K Dataset:** Utilized 8,732 labeled urban sound clips.
+- **Augmentation:** Mixed 2–4 urban sound clips with multi-speaker audio files to simulate real-world environments.
+- **Environmental Sounds:** Incorporated additional sounds (e.g., mosque recordings) with speech data.
+- **Storage:** Archived and uploaded the augmented datasets to Google Drive for future use.
 
-This project is expected to yield the following results:
-• Comprehensive comparison of segmentation models, highlighting their strengths
-and weaknesses.
+---
 
-• Development of an optimized segmentation pipeline that achieves high ac-
-curacy.
+##  Methodology
 
-• Deployment of a real-time web-based application for speech and non-speech
-segmentation.
-• Insights into future improvements in audio segmentation technology.
+1. **Audio Conversion:** Transformed input audio to WAV format using FFmpeg.
+2. **Voice Activity Detection (VAD):** Employed WebRTC VAD to separate speech and non-speech segments.
+3. **Noise Source Separation:** Applied Non-negative Matrix Factorization (NMF) to decompose non-speech audio into distinct background sources.
+4. **Feature Extraction:** Extracted features using YAMNet embeddings and computed statistical descriptors (mean, standard deviation, min, max, skewness, kurtosis).
+5. **Classification:** Trained machine learning models (SVM, Random Forest, Logistic Regression) to classify background noises.
+6. **Location Refinement:** Used classified background noises to enhance GPS-based location data.
+
+---
+
+## Results
+
+| Model                   | Precision | Recall | F1-Score | Accuracy |
+|-------------------------|-----------|--------|----------|----------|
+| Support Vector Classifier | 0.73      | 0.69   | 0.70     | 0.69     |
+| Random Forest Classifier  | 0.79      | 0.76   | 0.76     | 0.76     |
+| Logistic Regression       | 0.73      | 0.72   | 0.72     | 0.72     |
+
+The Random Forest Classifier outperformed other models, effectively handling label noise and capturing complex patterns in the data.
+
+---
+
+## Conclusion
+
+By focusing on non-speech elements in audio recordings, this project demonstrates a novel approach to forensic analysis. The classification of background noises provides additional context that, when combined with GPS data, enhances the accuracy of location identification in forensic investigations.
+
+---
+
+## References
+
+- T. Heittola et al., "Context-dependent sound event detection," IEEE, 2013.
+- [Speech Segmentation](https://arxiv.org/abs/2501.03711)
+- [Speaker Diarization](https://gist.github.com/EarlJr53/f935eff46d8c8d5a939568a3bed9c655)
+- J. Salamon et al., "UrbanSound8K: A Dataset of Urban Sound Recordings," ACM MM, 2014.
+- [Librosa: Python Library for Audio and Music Analysis](https://librosa.org/)
+- [Streamlit Application on Hugging Face](https://huggingface.co/spaces/Knight-coderr/Forensic-Noise-Classifier)
+---
+
+## Contact
+
+For any inquiries or contributions, please contact:
+
+- **Kunal Biswas:** m24de2014@iitj.ac.in
+- **Joel Paul:** m24de2012@iitj.ac.in
