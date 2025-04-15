@@ -1,9 +1,8 @@
 # Use Case : Forensic Background Noise Classification for Enhanced Location Pinpointing
 
-**Authors:**  
+**By:**  
 - Kunal Biswas (M24DE2014)  
 - Joel Paul (M24DE2012)  
-**Date:** April 15, 2025
 
 ---
 
@@ -64,7 +63,7 @@ By focusing on non-speech elements in audio recordings, this project demonstrate
 - [Speaker Diarization](https://gist.github.com/EarlJr53/f935eff46d8c8d5a939568a3bed9c655)
 - J. Salamon et al., "UrbanSound8K: A Dataset of Urban Sound Recordings," ACM MM, 2014.
 - [Librosa: Python Library for Audio and Music Analysis](https://librosa.org/)
-- [Streamlit Application on Hugging Face]([https://huggingface.co/spaces/Knight-coderr/Forensic-Noise-Classifier])
+- [Streamlit Application on Hugging Face](https://huggingface.co/spaces/Knight-coderr/Forensic-Noise-Classifier)
 ---
 
 ## Contact
