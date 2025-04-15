@@ -61,7 +61,6 @@ def synthesize_urban_clips(urban_clips, output_dir):
         for _, row in urban_df.iterrows()
     }
 
-    # Function to get labels from path list
     def get_labels_from_paths(paths):
         filenames = [os.path.basename(p) for p in paths]
         return [label_map.get(f, 'unknown') for f in filenames]

@@ -6,6 +6,11 @@ import numpy as np
 import soundfile as sf
 from glob import glob
 from tqdm import tqdm
+from sklearn.utils import resample
+from collections import defaultdict
+import shutil
+from sklearn.model_selection import train_test_split
+
 
 def mix_audio_clips(base_audio_path, urban_paths, output_path):
     y_base, sr = librosa.load(base_audio_path, sr=None)
@@ -20,3 +25,44 @@ def mix_audio_clips(base_audio_path, urban_paths, output_path):
         y_base = y_base + 0.5 * y_noise  # mix at lower volume
 
     sf.write(output_path, y_base, sr)
+
+def get_audio_events():
+        
+    # Paths
+    CSV_PATH = '/content/train.csv'
+    AUDIO_DIR = '/content/ARCA23K.audio'
+    OUTPUT_DIR = '/content/balanced_data'
+
+    # Load metadata
+    df = pd.read_csv(CSV_PATH)
+
+    # Create full audio file paths
+    df['path'] = df['fname'].astype(str) + '.wav'
+    df['full_path'] = df['path'].apply(lambda x: os.path.join(AUDIO_DIR, x))
+
+    # Filter out missing files
+    df = df[df['full_path'].apply(os.path.exists)]
+
+    print(f"Total available files: {len(df)}")
+
+    # Count examples per label
+    min_samples = df['label'].value_counts().min()
+
+    # Downsample each class to the smallest size
+    balanced_df = df.groupby('label').apply(lambda x: resample(x, replace=False, n_samples=min(min_samples, len(x))))
+    balanced_df = balanced_df.reset_index(drop=True)
+
+    print("Balanced class distribution:")
+    print(balanced_df['label'].value_counts())
+    train_df, test_df = train_test_split(balanced_df, test_size=0.2, stratify=balanced_df['label'], random_state=42)
+
+    def copy_files(df, split):
+        for _, row in df.iterrows():
+            dest_dir = os.path.join(OUTPUT_DIR, split, row['label'])
+            os.makedirs(dest_dir, exist_ok=True)
+            shutil.copy(row['full_path'], os.path.join(dest_dir, row['path']))
+
+    copy_files(train_df, "train")
+    copy_files(test_df, "test")
+
+
