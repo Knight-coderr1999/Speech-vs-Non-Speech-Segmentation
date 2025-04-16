@@ -2,6 +2,7 @@ from torch.utils.data import ConcatDataset
 from datasets.librispeech import LibriSpeechDataset
 from datasets.urbansound8k import UrbanSoundDataset
 from datasets.audioset import AudioSetDataset
+from torch.utils.data import Dataset, DataLoader
 
 def get_combined_loader(batch_size=16, speech_dir="/path/to/librispeech",
                          noise_meta_us8k="/path/to/UrbanSound8K/metadata.csv",

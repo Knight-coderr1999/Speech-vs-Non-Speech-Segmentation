@@ -9,11 +9,9 @@ def nonspeech_split(input_file):
     os.makedirs(base_path, exist_ok=True)
     y, sr = librosa.load(input_file, sr=None, mono=True)
 
-    # Short-Time Fourier Transform
     S = np.abs(librosa.stft(y, n_fft=1024, hop_length=512))
 
-    # Non-negative Matrix Factorization (NMF)
-    n_components = 4  # Change this based on how many sources you expect
+    n_components = 4
     model = NMF(n_components=n_components, init='nndsvda', random_state=42, max_iter=500)
     W = model.fit_transform(S)
     H = model.components_
@@ -29,5 +27,5 @@ def nonspeech_split(input_file):
         sources.append(y_i)
         sf.write(f"{base_path}separated_nonspeech_{i+1}.wav", y_i, sr)
 
-    print("✅ Separated sources saved as 'separated_nonspeech_1.wav', ..., etc.")
+    print(" Separated sources saved as 'separated_nonspeech_1.wav', ..., etc.")
     return base_path

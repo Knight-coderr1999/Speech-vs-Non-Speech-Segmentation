@@ -59,11 +59,7 @@ def separate_speech_nonspeech(audio_path, speech_output="speech.wav", nonspeech_
         nonspeech /= np.max(np.abs(nonspeech))
         sf.write(nonspeech_output, nonspeech, sr)
 
-    print("✅ Done. Files saved:")
+    print(" Done. Files saved:")
     print(f" - Speech: {speech_output}")
     print(f" - Non-Speech: {nonspeech_output}")
     return nonspeech_output
-
-# Usage
-# input_path=os.getenv("in_base_path")+"traffic_mix.m4a"
-# separate_speech_nonspeech(input_path)

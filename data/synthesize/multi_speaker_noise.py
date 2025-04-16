@@ -1,3 +1,36 @@
+# -*- coding: utf-8 -*-
+"""
+This script is designed to augment audio datasets by mixing speech audio clips 
+with urban noise clips. It provides functionality to mix multiple urban noise 
+clips with a base audio clip and generate augmented datasets for training machine 
+learning models.
+
+Functions:
+-----------
+1. mix_audio_clips(base_audio_path, urban_paths, output_path):
+    - Mixes a base audio clip with multiple urban noise clips.
+    - Pads or truncates urban noise clips to match the length of the base audio.
+    - Saves the mixed audio to the specified output path.
+
+2. synthesize_urban_clips(urban_clips, output_dir):
+    - Synthesizes a dataset by mixing speech audio clips with urban noise clips.
+    - Reads metadata from a CSV file to determine the base audio clips.
+    - Randomly selects 2 to 4 urban noise clips for each base audio clip.
+    - Saves the mixed audio and updates the metadata with paths and labels.
+    - Outputs the final augmented dataset as a CSV file.
+Usage:
+------
+1. Ensure the required libraries are installed.
+2. Place the urban noise clips in the specified directory (URBAN_PATH).
+3. Provide a CSV file with metadata for the base audio clips.
+4. Run the script to generate the augmented dataset.
+
+Note:
+-----
+- The script assumes specific directory structures and file paths. Update 
+  the paths (e.g., URBAN_PATH, MIXED_INPUT_DIR, OUTPUT_DIR) as needed.
+- Ensure the metadata CSV file contains the required columns (e.g., 'mixed_audio').
+"""
 import os
 import pandas as pd
 import random

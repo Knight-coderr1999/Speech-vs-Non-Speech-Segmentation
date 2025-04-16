@@ -20,7 +20,7 @@ class UrbanSoundDataset(Dataset):
         waveform = waveform.mean(dim=0, keepdim=True)
         waveform = torchaudio.functional.resample(waveform, sr, 16000)
         features = extract_mel_spectrogram(waveform, 16000)
-        return features, 0  # Non-speech label = 0
+        return features, 0 
     
     def download_urbansound8k():
         """

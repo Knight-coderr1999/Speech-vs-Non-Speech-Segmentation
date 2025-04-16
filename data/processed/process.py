@@ -1,13 +1,38 @@
+"""
+This script provides functionality for processing and balancing audio datasets. 
+It includes methods for mixing audio clips with urban noise and preparing 
+balanced datasets for training machine learning models.
+
+Functions:
+-----------
+1. mix_audio_clips(base_audio_path, urban_paths, output_path):
+    - Mixes a base audio clip with multiple urban noise clips.
+    - Pads or truncates urban noise clips to match the length of the base audio.
+    - Saves the mixed audio to the specified output path.
+
+2. get_audio_events():
+    - Processes an audio dataset based on metadata from a CSV file.
+    - Filters out missing audio files.
+    - Balances the dataset by downsampling each class to the smallest class size.
+    - Splits the dataset into training and testing sets.
+    - Copies the audio files into structured directories for training and testing.
+Usage:
+------
+1. Ensure the required libraries are installed.
+2. Provide a CSV file with metadata for the audio dataset (e.g., file names and labels).
+3. Place the audio files in the specified directory (AUDIO_DIR).
+4. Run the script to process and balance the dataset.
+"""
+
+
 import os
 import pandas as pd
-import random
 import librosa
 import numpy as np
 import soundfile as sf
 from glob import glob
 from tqdm import tqdm
 from sklearn.utils import resample
-from collections import defaultdict
 import shutil
 from sklearn.model_selection import train_test_split
 

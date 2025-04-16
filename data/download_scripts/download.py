@@ -1,3 +1,32 @@
+"""
+This script provides functionality to download audio datasets required for 
+speech and non-speech segmentation tasks. It includes methods to download 
+the UrbanSound8K dataset and the ARCA23K dataset.
+
+Functions:
+-----------
+1. download_urbansound8k():
+    - Downloads the UrbanSound8K dataset using the `soundata` library.
+    - Validates the dataset to ensure all files are downloaded correctly.
+    - Prints information about a random example clip from the dataset.
+
+2. download_arca23k():
+    - Downloads the ARCA23K dataset from Zenodo using `wget`.
+    - Handles multiple parts of the dataset (e.g., `.z01`, `.z02`, etc.).
+    - Prints the status of each download (success or failure).
+
+Dependencies:
+-------------
+- soundata: For downloading and managing the UrbanSound8K dataset.
+- subprocess: For executing shell commands to download ARCA23K files.
+
+Usage:
+------
+1. Ensure the required libraries (`soundata`) and tools (`wget`) are installed.
+2. Call `download_urbansound8k()` to download and validate the UrbanSound8K dataset.
+3. Call `download_arca23k()` to download the ARCA23K dataset.
+"""
+
 import soundata
 import subprocess
 
