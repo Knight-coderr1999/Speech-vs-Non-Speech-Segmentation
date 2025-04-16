@@ -83,9 +83,9 @@ The Random Forest Classifier outperformed other models, effectively handling lab
 ```bash
 pip install -r requirements.txt
 ```
-- Environment Setup
+### Environment Setup
 
-Before running the pipeline in .env file
+Before running the pipeline make sure .env is set properly
 
 | Variable        | Description                                      | Example Path                                                                 |
 |----------------|--------------------------------------------------|------------------------------------------------------------------------------|
@@ -96,12 +96,13 @@ Before running the pipeline in .env file
 
 Make sure the paths are valid and that `ffmpeg` is properly installed if you're using it for audio conversion.
 
-- Run the pipeline
+### Run the pipeline
   
 ```bash
 python main.py --input_path input_audio/sample.wav // make sure sample file exists in the runtime environment
 or
 python main.py
+```
 ---
 
 ## Conclusion
