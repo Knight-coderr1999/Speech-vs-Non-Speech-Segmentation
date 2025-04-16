@@ -83,14 +83,18 @@ The Random Forest Classifier outperformed other models, effectively handling lab
 ```bash
 pip install -r requirements.txt
 ```
-- Environment setup
+- Environment Setup
 
-Update your runtime environment
+Before running the pipeline in .env file
 
-base_path(Path to the extracted audio outputs directory) Example - "G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/extracted_audio/"
-checkpoint_path(Path to the checkpoints directory) Example - "G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/checkpoints/"
-in_base_path(Path to the input audio directory) Example - "G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/input_audio/"
-ffmpeg_path(Path to the ffmpeg if you plan to run wav convertion via ffmpeg) Example - "C:/ffmpeg/bin/ffmpeg.exe"
+| Variable        | Description                                      | Example Path                                                                 |
+|----------------|--------------------------------------------------|------------------------------------------------------------------------------|
+| `base_path`     | Path to the extracted audio outputs directory    | `G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/extracted_audio/` |
+| `checkpoint_path` | Path to the model checkpoints directory         | `G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/checkpoints/`      |
+| `in_base_path`  | Path to the input audio directory                | `G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/input_audio/`       |
+| `ffmpeg_path`   | Path to the ffmpeg binary for WAV conversion (optional)    | `C:/ffmpeg/bin/ffmpeg.exe`                                                                       |
+
+Make sure the paths are valid and that `ffmpeg` is properly installed if you're using it for audio conversion.
 
 - Run the pipeline
   
