@@ -48,6 +48,49 @@ This project aims to enhance forensic investigations by classifying background n
 
 The Random Forest Classifier outperformed other models, effectively handling label noise and capturing complex patterns in the data.
 
+
+---
+
+## Repository Structure
+
+```text
+├── main.py                  # Entry-point: process a WAV file and classify noise
+├── concept_diagram.png      # Visual diagram of project pipeline
+├── requirements.txt         # Python dependencies
+├── checkpoints/             # Saved model checkpoints
+├── data/                    # Scripts for downloading/synthesizing datasets
+├── datasets/                # PyTorch-compatible dataset loaders
+├── evaluate/                # Evaluation scripts (not required for end-users)
+├── extracted_audio/         # Output folder: segmented non-speech WAVs
+├── features/                # Feature extraction scripts (temporal + YAMNet)
+├── inference/               # Scripts to load checkpoints and run inference
+├── input_audio/             # Input folder for noisy audio samples
+├── models/                  # ML and DL model definitions
+├── notebooks/               # Colab notebooks for experimentation
+├── train/                   # Training scripts for models
+└── utils/                   # Utility functions (VAD, conversion, etc.)
+
+
+
+---
+
+## Getting Started
+
+###  Prerequisites
+
+- Python 3.8+
+- Install dependencies:
+
+```bash
+pip install -r requirements.txt
+
+- Run the pipeline
+
+```bash
+python main.py --input_path input_audio/sample.wav
+or
+python main.py
+
 ---
 
 ## Conclusion
