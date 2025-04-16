@@ -83,13 +83,21 @@ The Random Forest Classifier outperformed other models, effectively handling lab
 ```bash
 pip install -r requirements.txt
 ```
-- Run the pipeline
+- Environment setup
 
+Update your runtime environment
+
+base_path(Path to the extracted audio outputs directory) Example - "G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/extracted_audio/"
+checkpoint_path(Path to the checkpoints directory) Example - "G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/checkpoints/"
+in_base_path(Path to the input audio directory) Example - "G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/input_audio/"
+ffmpeg_path(Path to the ffmpeg if you plan to run wav convertion via ffmpeg) Example - "C:/ffmpeg/bin/ffmpeg.exe"
+
+- Run the pipeline
+  
 ```bash
-python main.py --input_path input_audio/sample.wav
+python main.py --input_path input_audio/sample.wav // make sure sample file exists in the runtime environment
 or
 python main.py
-```
 ---
 
 ## Conclusion
