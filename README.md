@@ -69,8 +69,7 @@ The Random Forest Classifier outperformed other models, effectively handling lab
 ├── notebooks/               # Colab notebooks for experimentation
 ├── train/                   # Training scripts for models
 └── utils/                   # Utility functions (VAD, conversion, etc.)
-
-
+```
 
 ---
 
@@ -83,14 +82,14 @@ The Random Forest Classifier outperformed other models, effectively handling lab
 
 ```bash
 pip install -r requirements.txt
-
+```
 - Run the pipeline
 
 ```bash
 python main.py --input_path input_audio/sample.wav
 or
 python main.py
-
+```
 ---
 
 ## Conclusion
