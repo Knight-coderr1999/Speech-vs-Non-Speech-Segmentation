@@ -6,10 +6,13 @@ import torchaudio.transforms as T
 import joblib
 from scipy.stats import skew, kurtosis
 import tensorflow_hub as hub
-
+import os
 # Load classifier and label encoder
-clf = joblib.load("checkpoints/noise_classifier.pkl")
-label_encoder = joblib.load("checkpoints/label_encoder.pkl")
+# update the path to the model and label encoder as per your directory structure
+# Ensure the model is in the checkpoints directory
+
+clf = joblib.load(os.getenv("checkpoint_path") + "noise_classifier.pkl")
+label_encoder = joblib.load(os.getenv("checkpoint_path") + "label_encoder.pkl")
 
 # Load YAMNet model
 yamnet_model = hub.load("https://tfhub.dev/google/yamnet/1")

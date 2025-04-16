@@ -1,0 +1,6 @@
+### SAMPLE ENV ####
+
+base_path="G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/extracted_audio/"
+checkpoint_path="G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/checkpoints/"
+in_base_path="G:/Forensic_Backround_noise_classification/Speech-vs-Non-Speech-Segmentation/input_audio/"
+ffmpeg_path="C:/ffmpeg/bin/ffmpeg.exe"

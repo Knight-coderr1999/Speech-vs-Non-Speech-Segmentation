@@ -1,17 +1,18 @@
-import subprocess
 import librosa
 import webrtcvad
 import numpy as np
 import soundfile as sf
 import os
 from dotenv import load_dotenv
+import torchaudio
+
 load_dotenv()
 
 def convert_to_wav(input_path, output_path="temp.wav", sr=16000):
     output_path=os.getenv("in_base_path")+output_path
-    ffmpeg_path = os.getenv("ffmpeg_path")
-    command = [ffmpeg_path, "-y", "-i", input_path, "-ac", "1", "-ar", str(sr), output_path]
-    subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    waveform, sample_rate = torchaudio.load(input_path)
+    resampled = torchaudio.transforms.Resample(orig_freq=sample_rate, new_freq=sr)(waveform)
+    torchaudio.save(output_path, resampled, sr)
     return output_path
 
 def load_audio(file_path, sr=16000):
